@@ -32,21 +32,26 @@ class GameState:
     def get_item_count(self, item):
         return self.inventory.get(item, 0)
 
-    def save_state(self, filename):
+    def save_state(self, filename="game_state.json"):
         with open(filename, 'w') as file:
             state_data = {
                 'inventory': self.inventory,
                 'progress': self.progress,
-                'completed_puzzles': list(self.completed_puzzles)
+                'completed_puzzles': list(self.completed_puzzles),
+                'current_location': self.current_location
             }
             json.dump(state_data, file)
 
-    def load_state(self, filename):
-        with open(filename, 'r') as file:
-            state_data = json.load(file)
-            self.inventory = state_data.get('inventory', {})
-            self.progress = state_data.get('progress', {})
-            self.completed_puzzles = set(state_data.get('completed_puzzles', []))
+    def load_state(self, filename="game_state.json"):
+        try:
+            with open(filename, 'r') as file:
+                state_data = json.load(file)
+                self.inventory = state_data.get('inventory', {})
+                self.progress = state_data.get('progress', {})
+                self.completed_puzzles = set(state_data.get('completed_puzzles', []))
+                self.current_location = state_data.get('current_location', "start")
+        except FileNotFoundError:
+            print(f"❌ Error: {filename} not found. Starting a new game.")
 
     def mark_puzzle_completed(self, puzzle_id):
         self.completed_puzzles.add(puzzle_id)

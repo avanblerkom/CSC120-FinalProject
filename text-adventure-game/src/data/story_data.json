@@ -1,0 +1,67 @@
+{
+  "locations": {
+    "start": {
+      "text": "You are Justin the Beaver, standing at the edge of a still pond. The wilderness stretches out before you, filled with opportunities and dangers. What will you do?",
+      "choices": [
+        {
+          "text": "Explore the forest.",
+          "next": "forest"
+        },
+        {
+          "text": "Gather materials for the dam.",
+          "next": "river"
+        }
+      ]
+    },
+    "forest": {
+      "text": "You are in a dense forest. The trees tower above you.",
+      "choices": [
+        {
+          "text": "Go south back to the starting point.",
+          "next": "start"
+        },
+        {
+          "text": "Go deeper into the forest.",
+          "next": "deep_forest"
+        },
+        {
+          "text": "Go east to the river.",
+          "next": "river"
+        }
+      ]
+    },
+    "river": {
+      "text": "You are by a rushing river. The sound of water fills the air.",
+      "puzzle_id": 1,
+      "choices": [
+        {
+          "text": "Go west back to the starting point.",
+          "next": "start"
+        },
+        {
+          "text": "Follow the river upstream.",
+          "next": "upstream"
+        }
+      ]
+    },
+    "deep_forest": {
+      "text": "You venture deeper into the forest, where the trees grow taller and the sounds of wildlife surround you. You feel a sense of adventure.",
+      "puzzle_id": 3,
+      "choices": [
+        {
+          "text": "Go back to the forest.",
+          "next": "forest"
+        }
+      ]
+    },
+    "upstream": {
+      "text": "You follow the river upstream and find a small waterfall.",
+      "choices": [
+        {
+          "text": "Go downstream back to the river.",
+          "next": "river"
+        }
+      ]
+    }
+  }
+}

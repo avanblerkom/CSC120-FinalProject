@@ -4,22 +4,29 @@ from src.engine.story_engine import StoryEngine
 class TestStoryEngine(unittest.TestCase):
 
     def setUp(self):
-        self.story_engine = StoryEngine()
-        self.story_engine.load_story('path/to/story_scripts.json')  # Adjust the path as necessary
+        self.combined_data = {
+            "locations": {
+                "start": {
+                    "story": {"text": "Welcome to the start."},
+                    "choices": [{"text": "Go to forest", "next_location": "forest"}]
+                },
+                "forest": {
+                    "story": {"text": "You are in a forest."},
+                    "choices": []
+                }
+            }
+        }
+        self.story_engine = StoryEngine(self.combined_data)
+
+    def test_load_location(self):
+        self.story_engine.load_location("start")
+        self.assertEqual(self.story_engine.get_story_text(), "Welcome to the start.")
 
     def test_get_choices(self):
-        choices = self.story_engine.get_choices('some_story_point')
-        self.assertIsInstance(choices, list)
-        self.assertGreater(len(choices), 0)
-
-    def test_make_choice(self):
-        initial_state = self.story_engine.current_state
-        self.story_engine.make_choice('valid_choice')
-        self.assertNotEqual(initial_state, self.story_engine.current_state)
-
-    def test_load_story(self):
-        self.story_engine.load_story('path/to/story_scripts.json')
-        self.assertIsNotNone(self.story_engine.story_data)
+        self.story_engine.load_location("start")
+        choices = self.story_engine.get_choices()
+        self.assertEqual(len(choices), 1)
+        self.assertEqual(choices[0]["text"], "Go to forest")
 
 if __name__ == '__main__':
     unittest.main()

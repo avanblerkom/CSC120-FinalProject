@@ -5,7 +5,7 @@
       "description": "You encounter a river blocking your path. The only way across is a fallen tree, guarded by your most feared enemy; a mink. Only if you answer the mink's riddle will you be allowed to cross: 'What can run but never walks, has a mouth but never talks, has a head but never weeps, has a bed but never sleeps?'",
       "solution": ["A river", "A river.", "River", "River."],
       "hint": "Look for something that flows and has a mouth.",
-      "next": "deeper_forest"
+      "next": "intro"
     },
     {
       "id": 2,
@@ -16,9 +16,10 @@
     },
     {
       "id": 3,
-      "description": "You find a hidden stash of acorns, but it's guarded by Acornelius! To access them, you must answer her question: 'What has keys but can't open locks?'",
-      "solution": ["A piano.", "A piano", "Piano"],
-      "hint": "Consider objects that have keys that are not used for locks."
+      "description": "You find a hidden stash of sticks, but it's guarded by Acornelius! To access them, you must answer her question: 'What has keys but can't open locks?'",
+      "solution": ["A piano.", "A piano", "Piano", "Piano."],
+      "hint": "Consider objects that have keys that are not used for locks.",
+      "next": "forest_exploration"
     },
     {
       "id": 4,

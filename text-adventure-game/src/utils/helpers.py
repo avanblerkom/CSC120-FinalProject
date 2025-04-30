@@ -1,5 +1,7 @@
 def generate_random_number(min_value, max_value):
     import random
+    if min_value > max_value:
+        raise ValueError("min_value cannot be greater than max_value.")
     return random.randint(min_value, max_value)
 
 def format_text(text):

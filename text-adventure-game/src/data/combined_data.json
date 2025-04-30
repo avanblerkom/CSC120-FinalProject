@@ -1,0 +1,308 @@
+{
+  "locations": {
+    "start": {
+      "story": {
+        "id": "intro",
+        "text": "You are Justin the Beaver, standing at the edge of a still pond. The wilderness stretches out before you, filled with opportunities and dangers. What will you do at the pond?"
+      },
+      "choices": [
+        {
+          "text": "Explore the forest.",
+          "next_location": "forest"
+        },
+        {
+          "text": "Gather materials for the dam.",
+          "next_location": "river"
+        },
+        {
+          "text": "Build the dam here at the pond.",
+          "next_location": "build_dam_start"
+        }
+      ]
+    },
+    "forest": {
+      "story": {
+        "id": "forest_exploration",
+        "text": "You are in a dense forest. The trees tower above you, but you see a friendly face peeking out from behind a tree."
+      },
+      "choices": [
+        {
+          "text": "Go south back to the starting point.",
+          "next_location": "start"
+        },
+        {
+          "text": "Go deeper into the forest.",
+          "next_location": "deep_forest"
+        },
+        {
+          "text": "Go east to the river.",
+          "next_location": "river"
+        },
+        {
+          "text": "Talk to Nutty the squrrel.",
+          "next_location": "talk_nutty"
+        }
+      ]
+    },
+    "river": {
+      "story": {
+        "id": "gather_materials",
+        "text": "You are by a rushing river. The sound of water fills the air."
+      },
+      "puzzle": {
+        "id": 1,
+        "description": "You encounter a river blocking your path. The only way across is a fallen tree, guarded by your most feared enemy; a mink. Only if you answer the mink's riddle will you be allowed to cross: 'What can run but never walks, has a mouth but never talks, has a head but never weeps, has a bed but never sleeps?'",
+        "solution": ["A river", "A river.", "River", "River."],
+        "hint": "Look for something that flows and has a mouth.",
+        "next": "intro"
+      },
+      "item": "stick",
+      "choices": [
+        {
+          "text": "Go west back to the starting point.",
+          "next_location": "start"
+        },
+        {
+          "text": "Follow the river upstream.",
+          "next_location": "upstream"
+        }
+      ]
+    },
+    "gather_materials": {
+      "story": {
+        "id": "gather_materials",
+        "text": "You gather materials by the river. The sound of rushing water fills the air."
+      },
+      "choices": [
+        {
+          "text": "Go back to the river.",
+          "next_location": "river"
+        },
+        {
+          "text": "Investigate a shiny object.",
+          "next_location": "investigate_object"
+        }
+      ]
+    },
+    "deep_forest": {
+      "story": {
+        "id": "deeper_forest",
+        "text": "You venture deeper into the forest, where the trees grow taller and the sounds of wildlife surround you. You feel a sense of adventure."
+      },
+      "puzzle": {
+        "id": 3,
+        "description": "You find a hidden stash of sticks, but it's guarded by Acornelius the squirrel! To access them, you must answer his question: 'What has keys but can't open locks?'",
+        "solution": ["A piano.", "A piano", "Piano", "Piano."],
+        "hint": "Consider objects that have keys that are not used for locks.",
+        "next": "forest_exploration"
+      },
+      "choices": [
+        {
+          "text": "Go back to the forest.",
+          "next_location": "forest"
+        },
+        {
+          "text": "Go to the clearing.",
+          "next_location": "clearing"
+        }
+      ]
+    },
+    "upstream": {
+      "story": {
+        "id": "upstream",
+        "text": "You follow the river upstream and find a small waterfall. Next to it, you notice a wise old owl perched on a branch, guarding its rather twiggy nest."
+      },
+      "puzzle": {
+        "id": 2,
+        "description": "Whodini the owl offers you a riddle: 'I am a solitary word, 5 letters long. Behead me once, I am the same. Behead me again, I am still the same. What word am I?'",
+        "solution": ["Alone.", "Alone"],
+        "hint": "The word is related to being by yourself.",
+        "next": ""
+      },
+      "choices": [
+        {
+          "text": "Go downstream back to the river.",
+          "next_location": "river"
+        },
+        {
+          "text": "Go to the mountain path.",
+          "next_location": "mountain_path"
+        }
+      ]
+    },
+    "clearing": {
+      "story": {
+        "id": "clearing",
+        "text": "You find a sunny clearing with scattered sticks on the ground. A mysterious riddle awaits you."
+      },
+      "puzzle": {
+        "id": 4,
+        "description": "What has roots as nobody sees, is taller than trees, up, up it goes, and yet it never grows?",
+        "solution": ["A mountain", "Mountain", "A mountain.", "Mountain."],
+        "hint": "Think of something tall and immovable.",
+        "next": ""
+      },
+      "choices": [
+        {
+          "text": "Go back to the deep forest.",
+          "next_location": "deep_forest"
+        },
+        {
+          "text": "Go to the mountain path.",
+          "next_location": "mountain_path"
+        }
+      ]
+    },
+    "mountain_path": {
+      "story": {
+        "id": "mountain_path",
+        "text": "You are on a rocky mountain path. The air is crisp and cold."
+      },
+      "choices": [
+        {
+          "text": "Climb higher to the mountain peak.",
+          "next_location": "mountain_peak"
+        },
+        {
+          "text": "Go back to the clearing.",
+          "next_location": "clearing"
+        },
+        {
+          "text": "Go back to upstream.",
+          "next_location": "upstream"
+        }
+      ]
+    },
+    "mountain_peak": {
+      "story": {
+        "id": "mountain_peak",
+        "text": "You reach the mountain peak. A beaver has never been so high! The view is breathtaking."
+      },
+      "choices": [
+        {
+          "text": "Descend back to the mountain path.",
+          "next_location": "mountain_path"
+        },
+        {
+          "text": "Go to the clearing.",
+          "next_location": "clearing"
+        },
+        {
+          "text": "Take a moment to enjoy the view.",
+          "next_location": "enjoy_view"
+        }
+      ]
+    },
+    "collect_sticks": {
+      "story": {
+        "id": "collect_sticks",
+        "text": "You collect some sticks. They will be useful for building your dam."
+      },
+      "item": "stick",
+      "choices": [
+        {
+          "text": "Go back to the clearing.",
+          "next_location": "clearing"
+        },
+        {
+          "text": "Go to the build dam location.",
+          "next_location": "build_dam"
+        }
+      ]
+    },
+    "build_dam": {
+      "story": {
+        "id": "build_dam",
+        "text": "You successfully gather materials and start building your dam. However, you need 3 sticks to complete the structure."
+      },
+      "choices": [
+        {
+          "text": "Use the sticks to complete the dam.",
+          "next_location": "dam_complete",
+          "required_item": "stick"
+        },
+        {
+          "text": "Search for more materials.",
+          "next_location": "gather_materials"
+        }
+      ]
+    },
+    "dam_complete": {
+      "story": {
+        "id": "dam_complete",
+        "text": "Congratulations! You have completed your dam and created a thriving lodge for your beaver family. You win!"
+      },
+      "choices": []
+    },
+    "talk_nutty": {
+      "story": {
+        "id": "talk_nutty",
+        "text": "Nutty shares some tips about finding the best materials for your dam. He offers to help you gather some."
+      },
+      "choices": [
+        {
+          "text": "Accept his help.",
+          "next_location": "gather_with_nutty"
+        },
+        {
+          "text": "Thank him and go back to the forest.",
+          "next_location": "forest"
+        }
+      ]
+    },
+    "gather_with_nutty": {
+      "story": {
+        "id": "gather_with_nutty",
+        "text": "Nutty helps you gather materials for your dam. Together, you collect a large pile of sticks and mud. You gain 1 stick!"
+      },
+      "item": "stick",
+      "choices": [
+        {
+          "text": "Thank Nutty and start building the dam.",
+          "next_location": "build_dam"
+        },
+        {
+          "text": "Explore the area further.",
+          "next_location": "forest"
+        }
+      ]
+    },
+    "investigate_object": {
+      "story": {
+        "id": "investigate_object",
+        "text": "You climb down and head towards the glimmering object. It's a shiny golden key! You pick it up."
+      },
+      "item": "golden key",
+      "choices": [
+        {
+          "text": "Keep exploring.",
+          "next_location": "river"
+        }
+      ]
+    },
+    "enjoy_view": {
+      "story": {
+        "id": "enjoy_view",
+        "text": "You take a moment to enjoy the beautiful view of the forest. It's peaceful and serene."
+      },
+      "choices": [
+        {
+          "text": "Climb down and continue your adventure.",
+          "next_location": "mountain_path"
+        }
+      ]
+    },
+    "build_dam_start": {
+      "story": {
+        "id": "build_dam_start",
+        "text": "You attempt to build the dam at the pond."
+      },
+      "choices": [
+        {
+          "text": "Continue exploring.",
+          "next_location": "start"
+        }
+      ]
+    }
+  }
+}

@@ -13,4 +13,6 @@ class TextParser:
 
     def validate_command(self, command, valid_commands):
         # Check if the command is valid
+        if not valid_commands or not isinstance(command, dict) or "action" not in command:
+            return False
         return command["action"] in valid_commands
