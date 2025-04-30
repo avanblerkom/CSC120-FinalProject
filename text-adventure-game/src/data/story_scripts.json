@@ -30,6 +30,10 @@
         {
           "text": "Continue exploring.",
           "next": "deeper_forest"
+        },
+        {
+          "text": "Go back to the start.",
+          "next": "intro"
         }
       ]
     },
@@ -79,6 +83,10 @@
         {
           "text": "Go west to the clearing.",
           "next": "clearing"
+        },
+        {
+          "text": "Go back to the start.",
+          "next": "intro"
         }
       ]
     },
