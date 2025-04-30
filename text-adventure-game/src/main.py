@@ -34,63 +34,83 @@ def play_game():
         # Get the current story data
         story = story_scripts.get(current_story_id, {})
         if not story:
-            print(f"DEBUG: Story ID '{current_story_id}' not found. Ending game.")
-            break
+            print(f"DEBUG: Story ID '{current_story_id}' not found. Returning to the previous story.")
+            continue  # Loop back to the current story
 
         print(story.get("text", "No story available for this location."))
 
         # Handle item rewards
         if "item" in story:
             game_state.update_inventory(story["item"])
+            if story["item"] == "stick":
+                print(f"You now have {game_state.get_item_count('stick')} stick(s).")
 
         # Handle puzzles
         if "puzzle_id" in story:
             puzzle_id = story["puzzle_id"]
+            if game_state.is_puzzle_completed(puzzle_id):
+                print("You have already solved this puzzle. Moving on...")
+                current_story_id = story.get("next", current_story_id)
+                continue
+
             puzzle = story_engine.puzzles.get(puzzle_id)
             if not puzzle:
                 print(f"DEBUG: Puzzle ID '{puzzle_id}' not found. Skipping puzzle.")
                 current_story_id = story.get("next", current_story_id)
                 continue
 
-            if puzzle:
-                print(puzzle["description"])
-                while True:
-                    user_solution = input("Your answer: ").strip().lower().translate(str.maketrans('', '', string.punctuation))
-                    if story_engine.solve_puzzle(puzzle_id, user_solution):
-                        print("Correct! You may proceed.")
-                        game_state.update_inventory("stick")
-                        print("A magical stick has appeared!")
-                        print(f"You now have {game_state.get_item_count('stick')} sticks.")
-                        game_state.mark_puzzle_completed(puzzle_id)
-                        current_story_id = puzzle["next"]  # Transition to the next story point
-                        break
-                    else:
-                        print("Incorrect. Try again or type 'hint' for help.")
-                        if user_solution.lower() == "hint":
-                            print(puzzle.get("hint", "No hints available."))
-                continue
+            print(puzzle["description"])
+            while True:
+                user_solution = input("Your answer: ").strip().lower().translate(str.maketrans('', '', string.punctuation))
+                if story_engine.solve_puzzle(puzzle_id, user_solution):
+                    print("Correct! You may proceed.")
+                    game_state.update_inventory("stick")
+                    print("A magical stick has appeared!")
+                    print(f"You now have {game_state.get_item_count('stick')} sticks.")
+                    game_state.mark_puzzle_completed(puzzle_id)
+                    current_story_id = puzzle["next"]  # Transition to the next story point
+                    break
+                else:
+                    print("Incorrect. Try again or type 'hint' for help.")
+                    if user_solution.lower() == "hint":
+                        print(puzzle.get("hint", "No hints available."))
+            continue
 
         # Display choices if available
         if "choices" in story and story["choices"]:
             print("What would you like to do?")
             for i, choice in enumerate(story["choices"], start=1):
                 print(f"{i}. {choice['text']}")
+            print(f"{len(story['choices']) + 1}. Exit the game")  # Add an exit option
 
             try:
                 choice_index = int(input("> ")) - 1
                 if 0 <= choice_index < len(story["choices"]):
                     next_story_id = story["choices"][choice_index]["next"]
-                    if next_story_id not in story_scripts:
-                        print(f"DEBUG: Invalid story transition to '{next_story_id}'. Staying at the current location.")
-                    else:
-                        current_story_id = next_story_id
+                    # Check if the player has enough sticks to complete the dam
+                    if next_story_id == "dam_complete":
+                        stick_count = game_state.get_item_count("stick")
+                        if stick_count < 3:
+                            print(f"You need at least 3 sticks to complete the dam! You currently have {stick_count} stick(s).")
+                            continue  # Stay in the current story
+                    current_story_id = next_story_id
+                elif choice_index == len(story["choices"]):  # Exit option
+                    print("Thank you for playing! Goodbye.")
+                    break
                 else:
                     print("Invalid choice. Try again.")
             except ValueError:
                 print("Please enter a number.")
         else:
-            print("There are no paths forward from here.")
-            break
+            print("There are no paths forward from here. Type 'exit' to quit or 'restart' to return to the beginning.")
+            user_input = input("> ").strip().lower()
+            if user_input == "exit":
+                print("Thank you for playing! Goodbye.")
+                break
+            elif user_input == "restart":
+                current_story_id = "intro"  # Restart the game
+            else:
+                print("Invalid input. Returning to the current story.")
 
 if __name__ == "__main__":
     play_game()

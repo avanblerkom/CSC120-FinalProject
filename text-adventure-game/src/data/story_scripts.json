@@ -11,6 +11,11 @@
         {
           "text": "Gather materials for the dam.",
           "next": "gather_materials"
+        },
+        {
+          "text": "Start building the dam.",
+          "next": "build_dam",
+          "required_item": "stick"
         }
       ]
     },
@@ -50,7 +55,8 @@
     },
     {
       "id": "gather_with_acornelius",
-      "text": "Acornelius helps you gather materials for your dam. Together, you collect a large pile of sticks and mud.",
+      "text": "Acornelius helps you gather materials for your dam. Together, you collect a large pile of sticks and mud. You gain 1 stick!",
+      "item": "stick",
       "choices": [
         {
           "text": "Thank Acornelius and start building the dam.",
@@ -135,10 +141,7 @@
       "id": "clearing",
       "text": "You find a sunny clearing with scattered sticks on the ground. A mysterious riddle awaits you.",
       "puzzle_id": 4,
-      "choices": [
-        {
-          "text": "Solve the riddle.",
-          "next": "collect_sticks"
+      "next": "deeper_forest"
         },
         {
           "text": "Go back to the deep forest.",
