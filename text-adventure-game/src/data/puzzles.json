@@ -1,0 +1,31 @@
+{
+  "puzzles": [
+    {
+      "id": 1,
+      "description": "You encounter a river blocking your path. The only way across is a fallen tree, guarded by your most feared enemy; a mink. Only if you answer the mink's riddle will you be allowed to cross: 'What can run but never walks, has a mouth but never talks, has a head but never weeps, has a bed but never sleeps?'",
+      "solution": ["A river", "A river.", "River", "River."],
+      "hint": "Look for something that flows and has a mouth.",
+      "next": "deeper_forest"
+    },
+    {
+      "id": 2,
+      "description": "A wise owl offers you a riddle: 'I am a solitary word, 5 letters long. Behead me once, I am the same. Behead me again, I am still the same. What word am I?'",
+      "solution": ["Alone.", "Alone"],
+      "hint": "Think about sounds and how they travel.",
+      "next": "climb_tree"
+    },
+    {
+      "id": 3,
+      "description": "You find a hidden stash of acorns, but it's guarded by Acornelius! To access them, you must answer her question: 'What has keys but can't open locks?'",
+      "solution": ["A piano.", "A piano", "Piano"],
+      "hint": "Consider objects that have keys that are not used for locks."
+    },
+    {
+      "id": 4,
+      "description": "What has roots as nobody sees, is taller than trees, up, up it goes, and yet it never grows?",
+      "solution": ["A mountain", "Mountain", "A mountain.", "Mountain."],
+      "hint": "Think of something tall and immovable.",
+      "next": "collect_sticks"
+    }
+  ]
+}

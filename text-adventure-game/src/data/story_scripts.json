@@ -1,0 +1,189 @@
+{
+  "scripts": [
+    {
+      "id": "intro",
+      "text": "You are Justin the Beaver, standing at the edge of your family lodge. The wilderness stretches out before you, filled with opportunities and dangers. What will you do?",
+      "choices": [
+        {
+          "text": "Explore the forest.",
+          "next": "forest_exploration"
+        },
+        {
+          "text": "Gather materials for the dam.",
+          "next": "gather_materials"
+        }
+      ]
+    },
+    {
+      "id": "forest_exploration",
+      "text": "As you venture into the forest, you hear rustling in the bushes. It's Acornelius the Squirrel! He seems excited to see you.",
+      "choices": [
+        {
+          "text": "Talk to Acornelius.",
+          "next": "talk_acornelius"
+        },
+        {
+          "text": "Continue exploring.",
+          "next": "deeper_forest"
+        }
+      ]
+    },
+    {
+      "id": "gather_materials",
+      "text": "You start collecting sticks and mud to build your dam.",
+      "puzzle_id": 1,
+      "next": "deeper_forest"
+    },
+    {
+      "id": "talk_acornelius",
+      "text": "Acornelius shares some tips about finding the best materials for your dam. He offers to help you gather some.",
+      "choices": [
+        {
+          "text": "Accept his help.",
+          "next": "gather_with_acornelius"
+        },
+        {
+          "text": "Thank him and go alone.",
+          "next": "gather_materials"
+        }
+      ]
+    },
+    {
+      "id": "gather_with_acornelius",
+      "text": "Acornelius helps you gather materials for your dam. Together, you collect a large pile of sticks and mud.",
+      "choices": [
+        {
+          "text": "Thank Acornelius and start building the dam.",
+          "next": "build_dam"
+        },
+        {
+          "text": "Explore the area further.",
+          "next": "forest_exploration"
+        }
+      ]
+    },
+    {
+      "id": "deeper_forest",
+      "text": "You venture deeper into the forest, where the trees grow taller and the sounds of wildlife surround you. You feel a sense of adventure.",
+      "choices": [
+        {
+          "text": "Go back to the forest.",
+          "next": "forest_exploration"
+        },
+        {
+          "text": "Go west to the clearing.",
+          "next": "clearing"
+        }
+      ]
+    },
+    {
+      "id": "climb_tree",
+      "text": "You find a tall tree and decide to climb it for a better view of the forest. As you reach the top, you spot a glimmering object in the distance.",
+      "choices": [
+        {
+          "text": "Climb down and investigate the object.",
+          "next": "investigate_object"
+        },
+        {
+          "text": "Stay in the tree and enjoy the view.",
+          "next": "enjoy_view"
+        }
+      ]
+    },
+    {
+      "id": "investigate_object",
+      "text": "You climb down and head towards the glimmering object. It's a shiny golden key! You pick it up.",
+      "item": "golden key",
+      "choices": [
+        {
+          "text": "Keep exploring.",
+          "next": "forest_exploration"
+        }
+      ]
+    },
+    {
+      "id": "enjoy_view",
+      "text": "You take a moment to enjoy the beautiful view of the forest. It's peaceful and serene.",
+      "choices": [
+        {
+          "text": "Climb down and continue your adventure.",
+          "next": "forest_exploration"
+        }
+      ]
+    },
+    {
+      "id": "build_dam",
+      "text": "You successfully gather materials and start building your dam. However, you need 3 sticks to complete the structure.",
+      "choices": [
+        {
+          "text": "Use the sticks to complete the dam.",
+          "next": "dam_complete",
+          "required_item": "stick"
+        },
+        {
+          "text": "Search for more materials.",
+          "next": "gather_materials"
+        }
+      ]
+    },
+    {
+      "id": "dam_complete",
+      "text": "Congratulations! You have completed your dam and created a thriving lodge for your beaver family. You win!",
+      "choices": []
+    },
+    {
+      "id": "clearing",
+      "text": "You find a sunny clearing with scattered sticks on the ground. A mysterious riddle awaits you.",
+      "puzzle_id": 4,
+      "choices": [
+        {
+          "text": "Solve the riddle.",
+          "next": "collect_sticks"
+        },
+        {
+          "text": "Go back to the deep forest.",
+          "next": "deeper_forest"
+        }
+      ]
+    },
+    {
+      "id": "collect_sticks",
+      "text": "You collect some sticks. They will be useful for building your dam.",
+      "item": "stick",
+      "choices": [
+        {
+          "text": "Go back to the previous location.",
+          "next": "clearing"
+        }
+      ]
+    },
+    {
+      "id": "mountain_path",
+      "text": "You are on a rocky mountain path. The air is crisp and cold.",
+      "choices": [
+        {
+          "text": "Climb higher.",
+          "next": "mountain_peak"
+        },
+        {
+          "text": "Go back to the river.",
+          "next": "river"
+        }
+      ]
+    },
+    {
+      "id": "mountain_peak",
+      "text": "You reach the mountain peak and find a pile of sticks left by a bird.",
+      "choices": [
+        {
+          "text": "Collect sticks.",
+          "next": "collect_sticks"
+        },
+        {
+          "text": "Descend back to the mountain path.",
+          "next": "mountain_path"
+        }
+      ]
+    }
+  ]
+}

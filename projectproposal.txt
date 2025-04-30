@@ -1,0 +1,37 @@
+The big idea behind my project:
+I am creating a text-based adventure game where players navigate through a story-driven world by making choices. The game will feature branching narratives, puzzles, and challenges that test the player's decision-making skills.
+
+Storyline:
+The game is set in the wilderness, where the player takes on the role of a young beaver named Justin. Benny has just left their family lodge to explore the environment and build their own dam. Along the way, Benny must gather resources, avoid predators, help other animals, and overcome environmental challenges. The ultimate goal is to create a thriving lodge and dam that can withstand the elements and support a growing beaver family.
+
+Characters:
+1. Justin the Beaver (Protagonist): The player character. Justin is resourceful, curious, and determined to make their mark on the wilderness.
+2. Acornelius the Squirrel: A chatty squirrel who loves to gossip and hoard nuts. Maybe he's good at finding things.
+3. Whodini the Owl: A wise but cryptic mentor figure who provides hints and advice throughout the game.
+4. Megan the Fox (Antagonist): A cunning predator who occasionally stalks Justin, creating tension and danger.
+5. Humans: Represented as a distant but impactful force, such as loggers or hikers, who can alter the environment in unexpected ways.
+6. Other Beavers: Justin's family or potential allies who can provide guidance or assistance in building the dam.
+
+Major building blocks the project will need to be successful:
+1. A story engine to handle branching narratives and player choices.
+2. A text parser to interpret player input.
+3. A system for managing game states (inventory, progress, etc.).
+4. A database or file system to store game data (e.g., story scripts, puzzles).
+5. A user interface for displaying text and receiving input.
+
+What I know how to build already:
+- Basic text input/output handling.
+- Simple branching logic for narratives.
+- Basic game state management.
+
+What I still need to figure out:
+- Implementing a more advanced text parser for complex inputs.
+- Designing and structuring the story engine for scalability.
+- Creating engaging puzzles and challenges.
+- Storing and retrieving game data efficiently.
+
+Potential roadblocks:
+- Ensuring the story engine handles all possible player choices without breaking.
+- Balancing the difficulty of puzzles to keep the game engaging but not frustrating.
+- Managing time effectively to complete all features before the deadline.
+

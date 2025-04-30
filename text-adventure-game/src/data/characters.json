@@ -1,0 +1,54 @@
+{
+  "characters": [
+    {
+      "name": "Justin the Beaver",
+      "role": "Protagonist",
+      "description": "A resourceful and curious young beaver determined to build a thriving dam.",
+      "attributes": {
+        "strength": 5,
+        "intelligence": 7,
+        "agility": 6
+      }
+    },
+    {
+      "name": "Acornelius the Squirrel",
+      "role": "Ally",
+      "description": "A chatty squirrel who loves to gossip and hoard nuts. He has a knack for finding things.",
+      "attributes": {
+        "strength": 3,
+        "intelligence": 6,
+        "agility": 9
+      }
+    },
+    {
+      "name": "Whodini the Owl",
+      "role": "Mentor",
+      "description": "A wise but cryptic figure who provides hints and advice throughout the game.",
+      "attributes": {
+        "strength": 2,
+        "intelligence": 10,
+        "agility": 4
+      }
+    },
+    {
+      "name": "Megan the Fox",
+      "role": "Antagonist",
+      "description": "A cunning predator who occasionally stalks Justin, creating tension and danger.",
+      "attributes": {
+        "strength": 8,
+        "intelligence": 7,
+        "agility": 9
+      }
+    },
+    {
+      "name": "Humans",
+      "role": "Distant Force",
+      "description": "Represented as loggers or hikers, they can alter the environment in unexpected ways.",
+      "attributes": {
+        "strength": 7,
+        "intelligence": 5,
+        "agility": 3
+      }
+    }
+  ]
+}
