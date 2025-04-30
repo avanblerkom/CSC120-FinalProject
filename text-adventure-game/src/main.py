@@ -80,6 +80,9 @@ def play_game():
         if "choices" in story and story["choices"]:
             print("What would you like to do?")
             for i, choice in enumerate(story["choices"], start=1):
+                # Skip the option to get help from Acornelius if he has already helped
+                if choice["next"] == "gather_with_acornelius" and game_state.has_acornelius_helped():
+                    continue
                 print(f"{i}. {choice['text']}")
             print(f"{len(story['choices']) + 1}. Exit the game")  # Add an exit option
 
@@ -87,6 +90,9 @@ def play_game():
                 choice_index = int(input("> ")) - 1
                 if 0 <= choice_index < len(story["choices"]):
                     next_story_id = story["choices"][choice_index]["next"]
+                    # Mark Acornelius as having helped if the player chooses that option
+                    if next_story_id == "gather_with_acornelius":
+                        game_state.mark_acornelius_helped()
                     # Check if the player has enough sticks to complete the dam
                     if next_story_id == "dam_complete":
                         stick_count = game_state.get_item_count("stick")

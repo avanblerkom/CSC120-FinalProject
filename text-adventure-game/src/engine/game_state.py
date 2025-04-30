@@ -6,6 +6,7 @@ class GameState:
         self.progress = {}
         self.completed_puzzles = set()  # Track completed puzzles
         self.current_location = "start"  # Initial location
+        self.acornelius_helped = False  # Track if Acornelius has helped the player
 
     def update_inventory(self, item):
         if item in self.inventory:
@@ -60,3 +61,10 @@ class GameState:
 
     def get_location(self):
         return self.current_location
+
+    def mark_acornelius_helped(self):
+        self.acornelius_helped = True
+        print("DEBUG: Acornelius has helped the player.")
+    
+    def has_acornelius_helped(self):
+        return self.acornelius_helped

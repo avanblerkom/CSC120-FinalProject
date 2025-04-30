@@ -12,8 +12,7 @@
       {
         "text": "Go east to the river.",
         "next_location": "river"
-        }
-      
+      }
     ]
   },
   "forest": {
@@ -85,7 +84,6 @@
       "id": "clearing",
       "text": "You find a sunny clearing with scattered sticks on the ground. A mysterious riddle awaits you."
     },
-    "puzzle_id": 4,
     "choices": [
       {
         "text": "Solve the riddle.",
@@ -93,7 +91,7 @@
       },
       {
         "text": "Go east back to the deep forest.",
-        "next_location": "deeper_forest"
+        "next_location": "deep_forest"
       },
       {
         "text": "Go north to the mountain path.",
@@ -118,6 +116,10 @@
       {
         "text": "Go west to the mountain path.",
         "next_location": "mountain_path"
+      },
+      {
+        "text": "Go south to the clearing.",
+        "next_location": "clearing"
       }
     ]
   },
@@ -152,14 +154,10 @@
     },
     "choices": [
       {
-        "text": "Collect sticks.",
-        "next_location": "collect_sticks"
-      },
-      {
         "text": "Descend back to the mountain path.",
         "next_location": "mountain_path"
       }
     ]
   }
 }
-  
+

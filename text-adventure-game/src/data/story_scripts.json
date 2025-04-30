@@ -142,13 +142,8 @@
       "text": "You find a sunny clearing with scattered sticks on the ground. A mysterious riddle awaits you.",
       "puzzle_id": 4,
       "next": "deeper_forest"
-        },
-        {
-          "text": "Go back to the deep forest.",
-          "next": "deeper_forest"
-        }
-      ]
     },
+    
     {
       "id": "collect_sticks",
       "text": "You collect some sticks. They will be useful for building your dam.",
