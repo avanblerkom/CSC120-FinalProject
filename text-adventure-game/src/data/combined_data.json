@@ -23,11 +23,11 @@
     "forest": {
       "story": {
         "id": "forest_exploration",
-        "text": "You are in a dense forest. The trees tower above you, but you see a friendly face peeking out from behind a tree."
+        "text": "You are in a dense forest. The trees tower above you, but you see a friendly face peeking out from behind a tree, your bae Sprayoncé!"
       },
       "choices": [
         {
-          "text": "Go south back to the starting point.",
+          "text": "Go south back to the pond.",
           "next_location": "start"
         },
         {
@@ -39,8 +39,8 @@
           "next_location": "river"
         },
         {
-          "text": "Talk to Nutty the squrrel.",
-          "next_location": "talk_nutty"
+          "text": "Talk to Sprayoncé the skunk.",
+          "next_location": "talk_sprayoncé"
         }
       ]
     },
@@ -59,7 +59,7 @@
       "item": "stick",
       "choices": [
         {
-          "text": "Go west back to the starting point.",
+          "text": "Go west back to the pond",
           "next_location": "start"
         },
         {
@@ -96,6 +96,7 @@
         "hint": "Consider objects that have keys that are not used for locks.",
         "next": "forest_exploration"
       },
+      "item": "stick",
       "choices": [
         {
           "text": "Go back to the forest.",
@@ -119,6 +120,7 @@
         "hint": "The word is related to being by yourself.",
         "next": ""
       },
+      "item": "stick",
       "choices": [
         {
           "text": "Go downstream back to the river.",
@@ -142,6 +144,7 @@
         "hint": "Think of something tall and immovable.",
         "next": ""
       },
+      "item": "stick",
       "choices": [
         {
           "text": "Go back to the deep forest.",
@@ -234,31 +237,31 @@
       },
       "choices": []
     },
-    "talk_nutty": {
+    "talk_sprayoncé": {
       "story": {
-        "id": "talk_nutty",
-        "text": "Nutty shares some tips about finding the best materials for your dam. He offers to help you gather some."
+        "id": "talk_sprayoncé",
+        "text": "Sprayoncé offers to help you gather some sticks - she knows you've been looking for them! What an icon."
       },
       "choices": [
         {
-          "text": "Accept his help.",
-          "next_location": "gather_with_nutty"
+          "text": "Accept her help.",
+          "next_location": "gather_with_sprayoncé"
         },
         {
-          "text": "Thank him and go back to the forest.",
+          "text": "Thank her and go back to the forest.",
           "next_location": "forest"
         }
       ]
     },
-    "gather_with_nutty": {
+    "gather_with_sprayoncé": {
       "story": {
-        "id": "gather_with_nutty",
-        "text": "Nutty helps you gather materials for your dam. Together, you collect a large pile of sticks and mud. You gain 1 stick!"
+        "id": "gather_with_sprayoncé",
+        "text": "Sprayoncé helps you gather materials for your dam. Together, you collect a large pile of sticks and mud. "
       },
       "item": "stick",
       "choices": [
         {
-          "text": "Thank Nutty and start building the dam.",
+          "text": "Thank Sprayoncé and start building the dam.",
           "next_location": "build_dam"
         },
         {
@@ -287,7 +290,7 @@
       },
       "choices": [
         {
-          "text": "Climb down and continue your adventure.",
+          "text": "Climb down and continue your adventure. You are careful - you remind yourself that beavers are (unironically) bottom heavy. ",
           "next_location": "mountain_path"
         }
       ]

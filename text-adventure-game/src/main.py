@@ -6,10 +6,16 @@ import json
 from engine.game_state import GameState
 from engine.story_engine import StoryEngine
 
-# Fix typo in sys.path.append
+# Add the parent directory to sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 def load_combined_data():
+    """
+    Load the combined_data.json file.
+
+    Returns:
+        dict: Parsed JSON data from the file, or exits the program if the file is not found.
+    """
     base_dir = os.path.dirname(os.path.abspath(__file__))
     data_path = os.path.join(base_dir, "data", "combined_data.json")
     try:
@@ -20,6 +26,10 @@ def load_combined_data():
         sys.exit(1)
 
 def play_game():
+    """
+    Main game loop that handles the flow of the game, including loading locations,
+    solving puzzles, and managing inventory.
+    """
     combined_data = load_combined_data()
     game_state = GameState()
     story_engine = StoryEngine(combined_data)
@@ -34,20 +44,20 @@ def play_game():
         # Special handling for the 'build_dam_start' location
         if current_location == "build_dam_start":
             required_sticks = 3
-            if game_state.get_item_count("stick") >= required_sticks:
+            current_sticks = game_state.get_item_count("stick")
+            if current_sticks >= required_sticks:
                 print("\n🎉 You have enough sticks to build the dam! The dam is complete. You win!")
                 current_location = "dam_complete"
                 continue
             else:
-                print(f"\n❌ You don't have enough sticks to build the dam. You currently have {game_state.get_item_count('stick')} stick(s).")
-                current_location = "start"
+                print(f"\n❌ You need {required_sticks} sticks to build the dam. You currently have {current_sticks} sticks. Keep exploring!")
+                current_location = "start"  # Fixed from "pond"
                 continue
 
         # Check for a puzzle at the current location
         if "puzzle" in location_data and not game_state.is_puzzle_completed(location_data["puzzle"]["id"]):
             puzzle = location_data["puzzle"]
             print(f"\nPuzzle: {puzzle['description']}")
-            print(f"Hint: {puzzle['hint']}")
             while True:
                 answer = input("\nYour answer: ").strip().lower()
                 if answer in [solution.lower() for solution in puzzle["solution"]]:
@@ -55,20 +65,20 @@ def play_game():
                     game_state.mark_puzzle_completed(puzzle["id"])
                     if "item" in location_data and location_data["item"] == "stick":
                         game_state.update_inventory("stick")
-                        print(f"\n🎉 You received a stick! You now have {game_state.get_item_count('stick')} stick(s).")
+                        print(f"\n🎉 You received a stick! You now have {game_state.get_item_count('stick')} sticks.")
                     current_location = puzzle["next"]
                     break
+                elif answer == "hint":
+                    print(f"\nHint: {puzzle['hint']}")
                 else:
-                    print("\n❌ Incorrect. Try again or type 'skip' to skip the puzzle.")
-                    if answer.lower() == "skip":
-                        print("\nSkipping the puzzle...")
-                        break
+                    print("\n❌ Incorrect. Try again or type 'hint' to get a hint.")
 
         # Special handling for the 'build_dam' location
         if current_location == "build_dam":
             required_sticks = 3
-            if game_state.get_item_count("stick") < required_sticks:
-                print(f"\n❌ You need at least {required_sticks} sticks to complete the dam. Keep exploring!")
+            current_sticks = game_state.get_item_count("stick")
+            if current_sticks < required_sticks:
+                print(f"\n❌ You need {required_sticks} sticks to complete the dam. You currently have {current_sticks}. Keep exploring!")
                 current_location = "gather_materials"
                 continue
 
@@ -99,4 +109,7 @@ def play_game():
             break
 
 if __name__ == "__main__":
+    """
+    Entry point for the game. Starts the game loop.
+    """
     play_game()
