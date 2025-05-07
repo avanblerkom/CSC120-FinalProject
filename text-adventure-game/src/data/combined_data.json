@@ -16,7 +16,7 @@
         },
         {
           "text": "Build the dam here at the pond.",
-          "next_location": "build_dam_start"
+          "next_location": "build_dam"
         }
       ]
     },
@@ -286,24 +286,12 @@
     "enjoy_view": {
       "story": {
         "id": "enjoy_view",
-        "text": "You take a moment to enjoy the beautiful view of the forest. It's peaceful and serene."
+        "text": "You take a moment to enjoy the beautiful view of the forest. It's peaceful and serene. You feel a sense of accomplishment, ... maybe in another life you were a rock star."
       },
       "choices": [
         {
           "text": "Climb down and continue your adventure. You are careful - you remind yourself that beavers are (unironically) bottom heavy. ",
           "next_location": "mountain_path"
-        }
-      ]
-    },
-    "build_dam_start": {
-      "story": {
-        "id": "build_dam_start",
-        "text": "You attempt to build the dam at the pond."
-      },
-      "choices": [
-        {
-          "text": "Continue exploring.",
-          "next_location": "start"
         }
       ]
     }

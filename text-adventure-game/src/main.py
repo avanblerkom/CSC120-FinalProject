@@ -41,19 +41,6 @@ def play_game():
         location_data = story_engine.data["locations"][current_location]
         print(f"\n{'='*40}\n{story_engine.get_story_text()}\n{'='*40}")
 
-        # Special handling for the 'build_dam_start' location
-        if current_location == "build_dam_start":
-            required_sticks = 3
-            current_sticks = game_state.get_item_count("stick")
-            if current_sticks >= required_sticks:
-                print("\n🎉 You have enough sticks to build the dam! The dam is complete. You win!")
-                current_location = "dam_complete"
-                continue
-            else:
-                print(f"\n❌ You need {required_sticks} sticks to build the dam. You currently have {current_sticks} sticks. Keep exploring!")
-                current_location = "start"  # Fixed from "pond"
-                continue
-
         # Check for a puzzle at the current location
         if "puzzle" in location_data and not game_state.is_puzzle_completed(location_data["puzzle"]["id"]):
             puzzle = location_data["puzzle"]
@@ -61,7 +48,7 @@ def play_game():
             while True:
                 answer = input("\nYour answer: ").strip().lower()
                 if answer in [solution.lower() for solution in puzzle["solution"]]:
-                    print("\n✅ Correct! You solved the puzzle.")
+                    print("\n✅ Correct! You solved the riddle.")
                     game_state.mark_puzzle_completed(puzzle["id"])
                     if "item" in location_data and location_data["item"] == "stick":
                         game_state.update_inventory("stick")
@@ -77,10 +64,13 @@ def play_game():
         if current_location == "build_dam":
             required_sticks = 3
             current_sticks = game_state.get_item_count("stick")
-            if current_sticks < required_sticks:
+            if current_sticks >= required_sticks:
+                print("\n🎉 You have enough sticks to build the dam! The dam is complete. You win!")
+                current_location = "dam_complete"
+            else:
                 print(f"\n❌ You need {required_sticks} sticks to complete the dam. You currently have {current_sticks}. Keep exploring!")
                 current_location = "gather_materials"
-                continue
+            continue
 
         # Display choices
         choices = story_engine.get_choices()

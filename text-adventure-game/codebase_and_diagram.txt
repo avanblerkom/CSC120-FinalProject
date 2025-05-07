@@ -1,0 +1,119 @@
+# Codebase Overview
+
+The codebase is a text-based adventure game where players navigate through a story-driven world by making choices, solving puzzles, and managing resources. The game is implemented in Python and is structured into several modules, each with a specific responsibility.
+
+---
+
+# Annotated Architecture Diagram
+
+Below is the annotated architecture diagram for the codebase:
+
+```
++-------------------------+
+|       main.py           |
+|-------------------------|
+| - Entry point for the   |
+|   game.                 |
+| - Manages the game loop |
+|   and user interactions.|
++-------------------------+
+            |
+            v
++-------------------------+       +-------------------------+
+|     GameState           |       |     StoryEngine         |
+|-------------------------|       |-------------------------|
+| - Manages game state,   |       | - Handles branching     |
+|   including inventory,  |       |   narratives and story  |
+|   progress, and current |       |   progression.          |
+|   location.             |       | - Loads and retrieves   |
+| - Tracks completed      |       |   story data.           |
+|   puzzles.              |       +-------------------------+
++-------------------------+
+            |
+            v
++-------------------------+       +-------------------------+
+|     TextParser          |       |     Helpers            |
+|-------------------------|       |-------------------------|
+| - Parses and validates  |       | - Utility functions for|
+|   user input.           |       |   formatting text,     |
+| - Supports commands like|       |   generating random    |
+|   "go", "take", etc.    |       |   numbers, etc.        |
++-------------------------+       +-------------------------+
+            |
+            v
++-------------------------+       +-------------------------+
+|     Data Files          |       |     UI Module          |
+|-------------------------|       |-------------------------|
+| - JSON files containing |       | - Manages text-based   |
+|   story data, puzzles,  |       |   user interface.      |
+|   and character info.   |       | - Displays text and    |
+| - Examples:             |       |   retrieves user input.|
+|   combined_data.json,   |       +-------------------------+
+|   puzzles.json, etc.    |
++-------------------------+
+```
+
+---
+
+# Explanation of Components
+
+1. main.py:
+   - The entry point of the game.
+   - Manages the game loop, including loading locations, solving puzzles, and managing inventory.
+   - Interacts with `GameState`, `StoryEngine`, and the UI module to provide a seamless gameplay experience.
+
+2. GameState:
+   - Tracks the player's inventory, progress, and current location.
+   - Manages completed puzzles and ensures the game state is persistent (e.g., saving/loading state).
+
+3. StoryEngine:
+   - Handles the branching narrative by loading and retrieving story data from JSON files.
+   - Provides the story text and available choices for the current location.
+
+4. TextParser:
+   - Parses and validates user input.
+   - Supports commands like "go [direction]", "take [item]", and "use [item]".
+
+5. Data Files:
+   - JSON files store the game's story, puzzles, and character data.
+   - Examples:
+     - combined_data.json: Contains all locations, puzzles, and story scripts.
+     - puzzles.json: Stores puzzle descriptions, solutions, and hints.
+     - characters.json: Defines characters and their attributes.
+
+6. UI Module:
+   - Provides functions for displaying text and retrieving user input.
+   - Ensures a clean and user-friendly text-based interface.
+
+7. Helpers:
+   - Contains utility functions for formatting text, generating random numbers, and other reusable operations.
+
+---
+
+# Codebase Structure
+
+```
+text-adventure-game/
+├── src/
+│   ├── main.py                # Entry point of the game
+│   ├── engine/
+│   │   ├── game_state.py       # Manages game state
+│   │   ├── story_engine.py     # Handles branching narratives
+│   │   └── text_parser.py      # Parses and validates user input
+│   ├── data/
+│   │   ├── combined_data.json  # Combined story and puzzle data
+│   │   ├── puzzles.json        # Puzzle descriptions and solutions
+│   │   └── characters.json     # Character definitions
+│   ├── ui/
+│   │   └── text_interface.py   # Text-based user interface
+│   └── utils/
+│       └── helpers.py          # Utility functions
+├── tests/
+│   ├── test_game_state.py      # Unit tests for GameState
+│   ├── test_story_engine.py    # Unit tests for StoryEngine
+│   └── test_text_parser.py     # Unit tests for TextParser
+├── requirements.txt            # Project dependencies
+├── cheatsheet.md               # Documentation for commands and game layout
+├── README.md                   # Project overview and setup instructions
+└── rubric.md                   # Project rubric and grading criteria
+```
