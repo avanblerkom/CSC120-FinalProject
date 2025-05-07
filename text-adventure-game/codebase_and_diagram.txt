@@ -1,14 +1,9 @@
-# Codebase Overview
-
-The codebase is a text-based adventure game where players navigate through a story-driven world by making choices, solving puzzles, and managing resources. The game is implemented in Python and is structured into several modules, each with a specific responsibility.
-
----
 
 # Annotated Architecture Diagram
 
 Below is the annotated architecture diagram for the codebase:
 
-```
+
 +-------------------------+
 |       main.py           |
 |-------------------------|
@@ -51,9 +46,7 @@ Below is the annotated architecture diagram for the codebase:
 |   combined_data.json,   |       +-------------------------+
 |   puzzles.json, etc.    |
 +-------------------------+
-```
 
----
 
 # Explanation of Components
 
@@ -88,11 +81,10 @@ Below is the annotated architecture diagram for the codebase:
 7. Helpers:
    - Contains utility functions for formatting text, generating random numbers, and other reusable operations.
 
----
 
 # Codebase Structure
 
-```
+
 text-adventure-game/
 ├── src/
 │   ├── main.py                # Entry point of the game
@@ -116,4 +108,4 @@ text-adventure-game/
 ├── cheatsheet.md               # Documentation for commands and game layout
 ├── README.md                   # Project overview and setup instructions
 └── rubric.md                   # Project rubric and grading criteria
-```
+
