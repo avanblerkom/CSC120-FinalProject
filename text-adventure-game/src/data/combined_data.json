@@ -123,25 +123,38 @@
       "item": "stick",
       "choices": [
         {
-          "text": "Go downstream back to the river.",
-          "next_location": "river"
+          "text": "Search the area for something useful.",
+          "next_location": "find_key"
         },
         {
-          "text": "Go to the mountain path.",
-          "next_location": "mountain_path"
+          "text": "Go downstream back to the river.",
+          "next_location": "river"
+        }
+      ]
+    },
+    "find_key": {
+      "story": {
+        "id": "find_key",
+        "text": "You search the area and find a shiny golden key hidden under some rocks. You pick it up and add it to your inventory."
+      },
+      "item": "golden key",
+      "choices": [
+        {
+          "text": "Go downstream back to the river.",
+          "next_location": "river"
         }
       ]
     },
     "clearing": {
       "story": {
         "id": "clearing",
-        "text": "You find a sunny clearing with scattered sticks on the ground. A mysterious riddle awaits you."
+        "text": "You find a sunny clearing scattered with sticks... no wait, stick BUGS! The swaying creatures will only reveal the real sticks if you answer their riddle."
       },
       "puzzle": {
         "id": 4,
-        "description": "What has roots as nobody sees, is taller than trees, up, up it goes, and yet it never grows?",
-        "solution": ["A mountain", "Mountain", "A mountain.", "Mountain."],
-        "hint": "Think of something tall and immovable.",
+        "description": "I have a head, but no brain. I have a body, but no heart. I have a base, but no feet. What am I? ",
+        "solution": ["A stick", "Stick", "A stick.", "Stick."],
+        "hint": "Think of something that is long and thin.",
         "next": ""
       },
       "item": "stick",
@@ -179,9 +192,13 @@
     "mountain_peak": {
       "story": {
         "id": "mountain_peak",
-        "text": "You reach the mountain peak. A beaver has never been so high! The view is breathtaking."
+        "text": "You reach the mountain peak. A beaver has never been so high! The view is breathtaking, but a locked chest also catches your eye."
       },
       "choices": [
+        {
+          "text": "Open the chest.",
+          "next_location": "open_chest"
+        },
         {
           "text": "Descend back to the mountain path.",
           "next_location": "mountain_path"
@@ -189,12 +206,22 @@
         {
           "text": "Go to the clearing.",
           "next_location": "clearing"
-        },
-        {
-          "text": "Take a moment to enjoy the view.",
-          "next_location": "enjoy_view"
         }
       ]
+    },
+    "open_chest": {
+      "story": {
+        "id": "open_chest",
+        "text": "The chest is locked. You need a key to open it."
+      },
+      "choices": [
+        {
+          "text": "Go back to the mountain path.",
+          "next_location": "mountain_path"
+        }
+      ],
+      "requires_key": true,
+      "item": "stick"
     },
     "collect_sticks": {
       "story": {
@@ -216,7 +243,7 @@
     "build_dam": {
       "story": {
         "id": "build_dam",
-        "text": "You successfully gather materials and start building your dam. However, you need 3 sticks to complete the structure."
+        "text": "You successfully gather materials and start building your dam. However, you need 4 sticks to complete the structure."
       },
       "choices": [
         {
