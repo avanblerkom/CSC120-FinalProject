@@ -31,15 +31,29 @@ def display_help():
     """
     help_text = """
     === Help Menu ===
-    Available Commands:
-    - go [direction]: Move to a different location (e.g., 'go north').
-    - take [item]: Pick up an item (e.g., 'take stick').
-    - use [item]: Use an item from your inventory (e.g., 'use stick').
-    - inventory: Check your current inventory.
-    - help: Display this help menu.
-    - quit: Exit the game.
+    How to Play:
+    - Navigate through the game by typing the number corresponding to your choice.
+    - Solve puzzles by typing your answer.
+    - Type 'inventory' to check your inventory.
+    - Type 'help' to display this menu.
+    - Type 'quit' to exit the game.
     """
     print(help_text)
+
+def display_inventory(game_state):
+    """
+    Display the player's current inventory.
+
+    Args:
+        game_state (GameState): The current game state object.
+    """
+    inventory = game_state.inventory
+    if inventory:
+        print("\n=== Inventory ===")
+        for item, count in inventory.items():
+            print(f"- {item}: {count}")
+    else:
+        print("\nYour inventory is empty.")
 
 def play_game():
     """
@@ -94,26 +108,25 @@ def play_game():
             print("\nWhat would you like to do?")
             for i, choice in enumerate(choices, start=1):
                 print(f"  {i}. {choice['text']}")
+            user_input = input("\n> ").strip().lower()
+            if user_input == "help":
+                display_help()
+                continue
+            elif user_input == "inventory":
+                display_inventory(game_state)
+                continue
+            elif user_input == "quit":
+                print("\n👋 Thanks for playing! Goodbye!")
+                break
             try:
-                user_input = input("\n> ").strip().lower()
-                if user_input == "help":
-                    display_help()
-                    continue
                 choice_index = int(user_input) - 1
                 if 0 <= choice_index < len(choices):
                     next_location = choices[choice_index]["next_location"]
-                    # Check if the choice requires items
-                    if "required_item" in choices[choice_index]:
-                        required_item = choices[choice_index]["required_item"]
-                        if game_state.get_item_count(required_item) < required_sticks:
-                            print(f"\n❌ You don't have enough {required_item}s to proceed.")
-                            continue
-                        game_state.remove_from_inventory(required_item, required_sticks)
                     current_location = next_location
                 else:
                     print("\n❌ Invalid choice. Try again.")
             except ValueError:
-                print("\n❌ Please enter a number.")
+                print("\n❌ Please enter a valid number or type 'help' for other valid commands.")
         else:
             print("\nThere are no paths forward. Exiting the game.")
             break
