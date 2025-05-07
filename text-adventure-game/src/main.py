@@ -25,6 +25,22 @@ def load_combined_data():
         print(f"❌ Error: {data_path} not found.")
         sys.exit(1)
 
+def display_help():
+    """
+    Display relevant content from the cheatsheet to the user.
+    """
+    help_text = """
+    === Help Menu ===
+    Available Commands:
+    - go [direction]: Move to a different location (e.g., 'go north').
+    - take [item]: Pick up an item (e.g., 'take stick').
+    - use [item]: Use an item from your inventory (e.g., 'use stick').
+    - inventory: Check your current inventory.
+    - help: Display this help menu.
+    - quit: Exit the game.
+    """
+    print(help_text)
+
 def play_game():
     """
     Main game loop that handles the flow of the game, including loading locations,
@@ -79,7 +95,11 @@ def play_game():
             for i, choice in enumerate(choices, start=1):
                 print(f"  {i}. {choice['text']}")
             try:
-                choice_index = int(input("\n> ")) - 1
+                user_input = input("\n> ").strip().lower()
+                if user_input == "help":
+                    display_help()
+                    continue
+                choice_index = int(user_input) - 1
                 if 0 <= choice_index < len(choices):
                     next_location = choices[choice_index]["next_location"]
                     # Check if the choice requires items
